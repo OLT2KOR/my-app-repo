@@ -1,0 +1,19 @@
+trigger:
+  branches:
+    include:
+      - main
+
+pool:
+  vmImage: 'ubuntu-latest'
+
+steps:
+  - task: UseJavaVersion@17
+    inputs:
+      versionSpec: '11'
+      addToPath: true
+
+  - script: 'mvn clean install'
+    displayName: 'Build with Maven'
+
+  - script: 'mvn test'
+    displayName: 'Run Tests'
