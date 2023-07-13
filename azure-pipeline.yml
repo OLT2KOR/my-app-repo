@@ -12,7 +12,7 @@ steps:
   inputs:
     repository: 'my-app-repo' #name of your repository
     Dockerfile: 'Dockerfile'
-    buildContext: '.'
+    
 
 - script: 'mvn clean install'
   displayName: 'Build with Maven'
