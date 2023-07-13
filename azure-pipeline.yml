@@ -10,16 +10,16 @@ steps:
 - task: Docker@2
   displayName: 'Build an image'
   inputs:
-    containerRegistry: 'ExplorationTask' # Replace with your container registry connection name
-    repository: 'my-app-repo' # Replace with the name of your repository
+    containerRegistry: 'ExplorationTask' # container registry connection name
+    repository: 'my-app-repo' #name of your repository
     Dockerfile: 'Dockerfile'
     buildContext: '.'
 
 - task: Docker@2
   displayName: 'Push an image'
   inputs:
-    containerRegistry: 'ExplorationTask' # Replace with your container registry connection name
-    repository: 'my-app-repo' # Replace with the name of your repository
+    containerRegistry: 'ExplorationTask' # container registry connection name
+    repository: 'my-app-repo' #name of your repository
     command: 'push'
 
 - script: 'mvn clean install'
