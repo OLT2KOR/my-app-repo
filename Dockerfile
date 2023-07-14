@@ -1,5 +1,5 @@
 # Use a base image with the necessary dependencies
-FROM openjdk:17-jdk-slim
+FROM openjdk:17-oracle
 
 MAINTAINER baeldung.com
 
