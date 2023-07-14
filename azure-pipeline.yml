@@ -7,6 +7,9 @@ pool:
   vmImage: 'ubuntu-latest'
 
 steps:
+  - script: 'mvn test'
+    displayName: 'Run Tests'
+
   - script: 'mvn clean install'
     displayName: 'Build with Maven'
 
@@ -16,5 +19,3 @@ steps:
       repository: 'my-app-repo' #name of your repository
       Dockerfile: 'Dockerfile'
 
-  - script: 'mvn test'
-    displayName: 'Run Tests'
