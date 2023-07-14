@@ -1,5 +1,5 @@
 # Use a base image with the necessary dependencies
-FROM openjdk:8-jdk-alpine
+FROM openjdk:17-jdk-slim
 
 MAINTAINER baeldung.com
 
