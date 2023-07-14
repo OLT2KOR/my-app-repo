@@ -3,18 +3,33 @@ trigger:
     include:
       - main
 
-pool:
-  vmImage: 'ubuntu-latest'
+stages:
+  - stage: Build
+    displayName: 'Build and Test'
+    jobs:
+      - job: BuildAndTest
+        displayName: 'Build and Test'
+        pool:
+          vmImage: 'ubuntu-latest'  # Select the desired VM image
 
-steps:
-- script: 'mvn clean install'
-  displayName: 'Build with Maven'
+        steps:
+          - script: |
+              mvn clean install
+            displayName: 'Build with Maven'
 
-- task: Docker@2
-  displayName: 'Build an image'
-  inputs:
-    repository: 'my-app-repo' #name of your repository
-    Dockerfile: 'Dockerfile'
+  - stage: Deploy
+    displayName: 'Deploy to Docker'
+    dependsOn: Build
+    jobs:
+      - job: DeployToDocker
+        displayName: 'Deploy to Docker'
+        pool:
+          vmImage: 'ubuntu-latest'  # Select the desired VM image
 
-- script: 'mvn test'
-  displayName: 'Run Tests'
+        steps:
+          - task: Docker@2
+            inputs:
+              repository: 'my-app-repo'  # Replace with the name of your Docker repository
+              command: 'buildAndPush'
+              Dockerfile: 'Dockerfile'
+              tags: 'latest'  # Adjust the Docker image tag as per your requirements
