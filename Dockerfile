@@ -1,5 +1,5 @@
 # Use a base image with the necessary dependencies
-FROM openjdk:17-oracle
+FROM openjdk:18-alpine
 
 MAINTAINER baeldung.com
 
