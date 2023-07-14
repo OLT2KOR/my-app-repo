@@ -16,8 +16,5 @@ steps:
     repository: 'my-app-repo' #name of your repository
     Dockerfile: 'Dockerfile'
 
-- script: 'mvn clean install'
-  displayName: 'Build with Maven'
-
 - script: 'mvn test'
   displayName: 'Run Tests'
